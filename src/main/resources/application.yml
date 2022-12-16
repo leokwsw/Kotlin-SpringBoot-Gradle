@@ -1,0 +1,29 @@
+server:
+ port: 8080 # 設定專案 port 為 8080
+spring:
+ sql:
+  init:
+   mode: always
+   platform: h2
+ h2:
+  console:
+   enabled: true # 啟動 H2 console
+   path: /h2-console # 設定 H2 管理頁面路徑
+ jpa:
+  hibernate:
+   ddl-auto: update
+  database-platform: org.hibernate.dialect.H2Dialect
+  show-sql: true # 顯示 JPA 運行的SQL語法
+  generate-ddl: false
+ datasource:
+  url: jdbc:h2:file:./src/main/resources/data/db;DB_CLOSE_DELAY=-1  # 設定 H2 資料庫連線位置
+  #  url: jdbc:h2:mem:db;DB_CLOSE_DELAY=-1  # 設定 H2 資料庫連線位置
+  driverClassName: org.h2.Driver
+  username: sa # 設定資料庫登入使用者
+  password: password # 設定資料庫登入密碼
+ thymeleaf:
+  cache: false    # 關閉 Cache
+  encoding: UTF-8 # 編碼設定
+  mode: HTML5     # 模式
+  suffix: .html   # 檔案副檔名
+  prefix: classpath:/templates/ # 檔案儲存位置
